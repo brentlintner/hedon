@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-coffee -cbo lib src &&
-coffee -cb .test test

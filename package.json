@@ -16,7 +16,7 @@
     "hedon": "bin/cli"
   },
   "scripts": {
-    "compile": "bin/compile",
+    "compile": "coffee -cbo lib src && coffee -cbo .test test",
     "dev": "bin/dev",
     "lint": "bin/lint",
     "lint-cov": "bin/lint-cov",
