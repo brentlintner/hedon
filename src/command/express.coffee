@@ -5,19 +5,37 @@ create = require "./express/create"
 run = require "./express/run"
 log = logger.create "express"
 
+keyword = [
+  "express application",
+  "express app",
+  "express server"
+]
+
+create_app = [
+  "create an",
+  "create a"
+]
+
+run_app = [
+  "run my express application",
+  "run my express",
+  "run express",
+  "start express application"
+]
+
+host_static = "should host"
+
 handle = (sentence) ->
-  if util.sentence_has "express application", sentence
-    # TODO less brittle check
-    if util.sentence_has "create an", sentence
+  if util.sentence_has keyword, sentence
+    if util.sentence_has create_app, sentence
       create.create()
 
-    if util.sentence_has "should host", sentence
-      console.log "I should host something.."
-      dir = util.value_for "should host", sentence
+    if util.sentence_has host_static, sentence
+      dir = util.value_for host_static, sentence
 
       if dir then create.static_host dir
 
-    if util.sentence_has "run my express application", sentence
+    if util.sentence_has run_app, sentence
       run.run()
 
 module.exports =

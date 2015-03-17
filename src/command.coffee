@@ -23,7 +23,6 @@ command_names = (sentence) ->
           _.each commands, (cmd, key) ->
             if key == part.value.toLowerCase()
               names[key] = [] if not names[key]
-              # TODO: technically should handle here
               names[key].push commands[key].handle.bind null, sentence
 
   names
@@ -32,11 +31,10 @@ run_command = (sentence) ->
   names = command_names sentence
 
   _.each names, (name, key) ->
-    console.log "found #{key} commands for a sentence"
     _.each name, (func) -> func()
 
 run_commands_from_nlcst = (nlcst) ->
-  log.info "running"
+  log.debug "interpreting"
 
   sentences(nlcst).forEach (sentence) ->
     if sentence.children
