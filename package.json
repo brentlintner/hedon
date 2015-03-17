@@ -1,0 +1,50 @@
+{
+  "name": "hedon",
+  "version": "0.0.0",
+  "description": "A declarative, natural language scripting engine for NodeJS applications.",
+  "homepage": "",
+  "author": {
+    "name": "Brent Lintner",
+    "email": "brent.lintner@gmail.com"
+  },
+  "licenses": [
+    {
+      "type": "ISC"
+    }
+  ],
+  "bin": {
+    "hedon": "bin/cli"
+  },
+  "scripts": {
+    "compile": "bin/compile",
+    "dev": "bin/dev",
+    "lint": "bin/lint",
+    "lint-cov": "bin/lint-cov",
+    "postinstall": "npm run compile",
+    "test": "bin/test",
+    "test-cov": "bin/test-cov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:brentlintner/hedon.git"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "coffee-script": "1.8.0",
+    "commander": "^2.7.1",
+    "lodash": "^3.5.0",
+    "minilog": "2.0.6",
+    "parse-latin": "0.4.2",
+    "shelljs": "^0.3.0",
+    "wrench": "1.5.8"
+  },
+  "devDependencies": {
+    "chai": "2.1.1",
+    "coffeelint": "1.9.2",
+    "istanbul": "0.3.7",
+    "mimus": "0.1.2",
+    "mocha": "2.2.1",
+    "sinon": "1.14.0",
+    "sinon-chai": "2.7.0"
+  }
+}

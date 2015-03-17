@@ -1,0 +1,6 @@
+node_modules
+bower_components
+.git
+test/helpers/sinon_chai.js
+test/fixtures
+coverage

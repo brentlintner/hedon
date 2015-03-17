@@ -1,0 +1,7 @@
+coverage
+node_modules
+.test
+lib
+IDEAS.md
+test_app
+test_cmds
