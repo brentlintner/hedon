@@ -8,7 +8,7 @@ examples = """
 
     hedon -f file.txt
 
-    hedon -s "I need an express application."
+    hedon -s "Create an express application."
 
 """
 
