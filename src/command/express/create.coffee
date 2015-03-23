@@ -50,7 +50,9 @@ create = ->
   install.install()
 
   log.info "making lib/ directory"
-  fs.mkdir "lib"
+
+  if !fs.existsSync "lib"
+    fs.mkdirSync "lib"
 
   log.info "creating an app.js file"
   fs.writeFileSync path.join("lib", "app.js"), basic_app
