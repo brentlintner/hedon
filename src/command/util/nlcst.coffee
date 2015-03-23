@@ -1,3 +1,3 @@
 module.exports =
   word: "WordNode"
-  puncuation: "PunctuationNode"
+  punctuation: "PunctuationNode"

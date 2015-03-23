@@ -34,6 +34,7 @@ handle = (sentence) ->
       dir = util.value_for host_static, sentence
 
       if dir then create.static_host dir
+      else log.warn "no directory to host. got '#{dir}'"
 
     if util.sentence_has run_app, sentence
       run.run()

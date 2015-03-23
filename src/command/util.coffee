@@ -4,7 +4,6 @@ logger = require "./../logger"
 nlcst = require "./util/nlcst"
 log = logger.create "util"
 
-# TODO: string could be an array of strings
 _sentence_has = (string, sentence) ->
   words = []
 
@@ -15,19 +14,15 @@ _sentence_has = (string, sentence) ->
         "")
       words.push i
 
-  has = words.join(" ").match(new RegExp string)
-
-  has
+  !!words.join(" ").match(new RegExp string)
 
 sentence_has = (iterator, sentence) ->
-  words = []
   has = false
 
   if typeof iterator != "string"
-    # TODO: short circuit?
-    iterator.forEach (item) ->
-      if !has
-        has = _sentence_has item, sentence
+    _.each iterator, (item) ->
+      if !has then has = _sentence_has item, sentence
+      if has then false
   else
     has = _sentence_has iterator, sentence
 
@@ -43,28 +38,27 @@ value_for = (prefix, sentence) ->
   found = false
 
   sentence.children.forEach (node) ->
-    if node.type == nlcst.word &&
-       node.value == "}"
-      found = false
+    found = false if variable_closed node
+    values.push(node_value node) if found
+    found = true if variable_opened node
 
-    if found
-      if node.type == nlcst.punctuation
-        i = node.children.reduce(
-          (p, c) -> p + c.value.toLowerCase(),
-          "")
+  values.join ""
 
-        values.push i
+node_value = (node) ->
+  if node.type == nlcst.word
+    node.children.reduce(
+      (p, c) -> p + c.value.toLowerCase(),
+      "")
+  else
+    node.value
 
-      else
-        values.push node.value
+variable_opened = (node) ->
+  node.type == nlcst.punctuation &&
+  node.value == "{"
 
-    if node.type == nlcst.punctuation &&
-       node.value == "{"
-      found = true
-
-  value = values.join ""
-
-  value
+variable_closed = (node) ->
+  node.type == nlcst.punctuation &&
+  node.value == "}"
 
 exec = (cmd) ->
   result = shell.exec cmd
