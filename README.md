@@ -1,5 +1,7 @@
 ## Hedon
 
+[![npm version](https://badge.fury.io/js/hedon.svg)](http://badge.fury.io/js/hedon)
+
 A declarative, natural language scripting engine for NodeJS/JavaScript applications.
 
 Beware!
