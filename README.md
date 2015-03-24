@@ -18,7 +18,7 @@ If anything, this could be used to create project bootstraps.
 
 Create a file called `test.txt`:
 
-```text
+```
 Create an Express application.
 
 The Express application should host {public/} when started.
@@ -38,7 +38,7 @@ You should be able to navigate to:
 
 You can also create `run.txt`:
 
-```text
+```
 Run my express application, please!
 ```
 
